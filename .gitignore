@@ -15,3 +15,11 @@ not_nand
 not_nand_tb.vcd
 and_nand
 and_nand_tb.vcd
+ha
+ha_tb.vcd
+fa
+fa_tb.vcd
+ha_fa
+ha_fa_tb.vcd
+rca
+rca_tb.vcd
