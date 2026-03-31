@@ -1,0 +1,82 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01128648 .scope module, "fa_tb" "fa_tb" 2 1;
+ .timescale 0 0;
+v0112EA00_0 .var "a", 0 0;
+v0112EB08_0 .var "b", 0 0;
+v0112E5E0_0 .net "carry", 0 0, L_01184CF0; 1 drivers
+v0112E950_0 .var "cin", 0 0;
+v0112E638_0 .net "sum", 0 0, L_0112EDD8; 1 drivers
+S_01129060 .scope module, "n1" "fa" 2 4, 3 1, S_01128648;
+ .timescale 0 0;
+L_01123358 .functor XOR 1, v0112EA00_0, v0112EB08_0, C4<0>, C4<0>;
+L_0112EDD8 .functor XOR 1, L_01123358, v0112E950_0, C4<0>, C4<0>;
+L_01184F58 .functor AND 1, v0112EA00_0, v0112EB08_0, C4<1>, C4<1>;
+L_01184C80 .functor AND 1, v0112EA00_0, v0112E950_0, C4<1>, C4<1>;
+L_01184D98 .functor OR 1, L_01184F58, L_01184C80, C4<0>, C4<0>;
+L_01184E40 .functor AND 1, v0112EB08_0, v0112E950_0, C4<1>, C4<1>;
+L_01184CF0 .functor OR 1, L_01184D98, L_01184E40, C4<0>, C4<0>;
+v01163F08_0 .net *"_s0", 0 0, L_01123358; 1 drivers
+v01123250_0 .net *"_s10", 0 0, L_01184E40; 1 drivers
+v011232A8_0 .net *"_s4", 0 0, L_01184F58; 1 drivers
+v01123300_0 .net *"_s6", 0 0, L_01184C80; 1 drivers
+v01123DF0_0 .net *"_s8", 0 0, L_01184D98; 1 drivers
+v01123E48_0 .net "a", 0 0, v0112EA00_0; 1 drivers
+v01123EA0_0 .net "b", 0 0, v0112EB08_0; 1 drivers
+v01123EF8_0 .alias "carry", 0 0, v0112E5E0_0;
+v01129808_0 .net "cin", 0 0, v0112E950_0; 1 drivers
+v01129860_0 .alias "sum", 0 0, v0112E638_0;
+    .scope S_01128648;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, cin = %b,sum = %b, carry = %b", v0112EA00_0, v0112EB08_0, v0112E950_0, v0112E638_0, v0112E5E0_0;
+    %vpi_call 2 8 "$dumpfile", "fa_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_01128648;
+    %end;
+    .thread T_0;
+    .scope S_01128648;
+T_1 ;
+    %set/v v0112EA00_0, 0, 1;
+    %set/v v0112EB08_0, 0, 1;
+    %set/v v0112E950_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 0, 1;
+    %set/v v0112EB08_0, 0, 1;
+    %set/v v0112E950_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 0, 1;
+    %set/v v0112EB08_0, 1, 1;
+    %set/v v0112E950_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 0, 1;
+    %set/v v0112EB08_0, 1, 1;
+    %set/v v0112E950_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 1, 1;
+    %set/v v0112EB08_0, 0, 1;
+    %set/v v0112E950_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 1, 1;
+    %set/v v0112EB08_0, 0, 1;
+    %set/v v0112E950_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 1, 1;
+    %set/v v0112EB08_0, 1, 1;
+    %set/v v0112E950_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0112EA00_0, 1, 1;
+    %set/v v0112EB08_0, 1, 1;
+    %set/v v0112E950_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fa_tb.v";
+    "fa.v";

@@ -1,0 +1,90 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0118DF00 .scope module, "ha_fa_tb" "ha_fa_tb" 2 1;
+ .timescale 0 0;
+v0118B1E8_0 .var "a", 0 0;
+v0118B870_0 .var "b", 0 0;
+v0118B2F0_0 .net "carry", 0 0, L_011BFB00; 1 drivers
+v0118B608_0 .var "cin", 0 0;
+v0118B4A8_0 .net "sum", 0 0, L_011BF940; 1 drivers
+S_0118E010 .scope module, "n1" "ha_fa" 2 4, 3 1, S_0118DF00;
+ .timescale 0 0;
+L_011BFB00 .functor OR 1, L_011BFAC8, L_011BFA20, C4<0>, C4<0>;
+v01184410_0 .net "a", 0 0, v0118B1E8_0; 1 drivers
+v01184468_0 .net "b", 0 0, v0118B870_0; 1 drivers
+v011844C0_0 .net "c1", 0 0, L_011BFAC8; 1 drivers
+v01184518_0 .net "c2", 0 0, L_011BFA20; 1 drivers
+v0118B5B0_0 .alias "carry", 0 0, v0118B2F0_0;
+v0118B190_0 .net "cin", 0 0, v0118B608_0; 1 drivers
+v0118B558_0 .net "s1", 0 0, L_011BF9E8; 1 drivers
+v0118B3A0_0 .alias "sum", 0 0, v0118B4A8_0;
+S_0118D2C8 .scope module, "h1" "ha" 3 5, 3 10, S_0118E010;
+ .timescale 0 0;
+L_011BF9E8 .functor XOR 1, v0118B1E8_0, v0118B870_0, C4<0>, C4<0>;
+L_011BFAC8 .functor AND 1, v0118B1E8_0, v0118B870_0, C4<1>, C4<1>;
+v01183300_0 .alias "a", 0 0, v01184410_0;
+v01183FD0_0 .alias "b", 0 0, v01184468_0;
+v01184028_0 .alias "carry", 0 0, v011844C0_0;
+v01184080_0 .alias "sum", 0 0, v0118B558_0;
+S_0118DE78 .scope module, "h2" "ha" 3 6, 3 10, S_0118E010;
+ .timescale 0 0;
+L_011BF940 .functor XOR 1, L_011BF9E8, v0118B608_0, C4<0>, C4<0>;
+L_011BFA20 .functor AND 1, L_011BF9E8, v0118B608_0, C4<1>, C4<1>;
+v0118EC60_0 .alias "a", 0 0, v0118B558_0;
+v0118ECB8_0 .alias "b", 0 0, v0118B190_0;
+v01183250_0 .alias "carry", 0 0, v01184518_0;
+v011832A8_0 .alias "sum", 0 0, v0118B4A8_0;
+    .scope S_0118DF00;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, cin = %b,sum = %b, carry = %b", v0118B1E8_0, v0118B870_0, v0118B608_0, v0118B4A8_0, v0118B2F0_0;
+    %vpi_call 2 8 "$dumpfile", "ha_fa_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_0118DF00;
+    %end;
+    .thread T_0;
+    .scope S_0118DF00;
+T_1 ;
+    %set/v v0118B1E8_0, 0, 1;
+    %set/v v0118B870_0, 0, 1;
+    %set/v v0118B608_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 0, 1;
+    %set/v v0118B870_0, 0, 1;
+    %set/v v0118B608_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 0, 1;
+    %set/v v0118B870_0, 1, 1;
+    %set/v v0118B608_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 0, 1;
+    %set/v v0118B870_0, 1, 1;
+    %set/v v0118B608_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 1, 1;
+    %set/v v0118B870_0, 0, 1;
+    %set/v v0118B608_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 1, 1;
+    %set/v v0118B870_0, 0, 1;
+    %set/v v0118B608_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 1, 1;
+    %set/v v0118B870_0, 1, 1;
+    %set/v v0118B608_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0118B1E8_0, 1, 1;
+    %set/v v0118B870_0, 1, 1;
+    %set/v v0118B608_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ha_fa_tb.v";
+    "ha_fa.v";

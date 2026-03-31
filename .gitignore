@@ -11,3 +11,7 @@ xnor1
 xnorg_tb.vcd
 not1
 notg_tb.vcd
+not_nand
+not_nand_tb.vcd
+and_nand
+and_nand_tb.vcd
