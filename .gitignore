@@ -1,2 +1,13 @@
 and1
 andg_tb.vcd
+or1
+org_tb.vcd
+nand1
+nandg_tb.vcd
+norg_tb.vcd
+xor1
+xorg_tb.vcd
+xnor1
+xnorg_tb.vcd
+not1
+notg_tb.vcd
