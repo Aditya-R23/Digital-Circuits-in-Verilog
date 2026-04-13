@@ -43,3 +43,4 @@ xor_nor
 xor_nor_tb.vcd
 xnor_nor
 xnor_nor_tb.vcd
+or_using_nand
