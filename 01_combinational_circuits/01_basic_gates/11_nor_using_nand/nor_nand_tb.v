@@ -1,12 +1,12 @@
-module or_nand_tb;
+module nor_nand_tb;
 reg a, b;
 wire y;
-or_nand n1 (.a(a), .b(b), .y(y));
+nor_nand n1 (.a(a), .b(b), .y(y));
 
 initial begin
     $monitor("a = %b, b = %b, y = %b", a, b, y);
-    $dumpfile("or_nand_tb.vcd");
-    $dumpvars(0, or_nand_tb);
+    $dumpfile("nor_nand_tb.vcd");
+    $dumpvars(0, nor_nand_tb);
 end
 
 initial begin

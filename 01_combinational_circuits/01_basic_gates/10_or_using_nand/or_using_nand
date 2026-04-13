@@ -1,0 +1,57 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_011E7F78 .scope module, "or_nand_tb" "or_nand_tb" 2 1;
+ .timescale 0 0;
+v011E3F30_0 .var "a", 0 0;
+v01223308_0 .var "b", 0 0;
+v01223360_0 .net "y", 0 0, L_011EE890; 1 drivers
+S_011E8088 .scope module, "n1" "or_nand" 2 4, 3 1, S_011E7F78;
+ .timescale 0 0;
+L_011E32C0 .functor AND 1, v011E3F30_0, v011E3F30_0, C4<1>, C4<1>;
+L_012233F0 .functor NOT 1, L_011E32C0, C4<0>, C4<0>, C4<0>;
+L_01223460 .functor AND 1, v01223308_0, v01223308_0, C4<1>, C4<1>;
+L_012234D0 .functor NOT 1, L_01223460, C4<0>, C4<0>, C4<0>;
+L_011EE520 .functor AND 1, L_012233F0, L_012234D0, C4<1>, C4<1>;
+L_011EE890 .functor NOT 1, L_011EE520, C4<0>, C4<0>, C4<0>;
+v01222B70_0 .net *"_s0", 0 0, L_011E32C0; 1 drivers
+v01222970_0 .net *"_s4", 0 0, L_01223460; 1 drivers
+v011E31B8_0 .net *"_s8", 0 0, L_011EE520; 1 drivers
+v011E3210_0 .net "a", 0 0, v011E3F30_0; 1 drivers
+v011E3268_0 .net "b", 0 0, v01223308_0; 1 drivers
+v011E3E28_0 .net "s1", 0 0, L_012233F0; 1 drivers
+v011E3E80_0 .net "s2", 0 0, L_012234D0; 1 drivers
+v011E3ED8_0 .alias "y", 0 0, v01223360_0;
+    .scope S_011E7F78;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, y = %b", v011E3F30_0, v01223308_0, v01223360_0;
+    %vpi_call 2 8 "$dumpfile", "or_nand_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_011E7F78;
+    %end;
+    .thread T_0;
+    .scope S_011E7F78;
+T_1 ;
+    %set/v v011E3F30_0, 0, 1;
+    %set/v v01223308_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011E3F30_0, 0, 1;
+    %set/v v01223308_0, 1, 1;
+    %delay 10, 0;
+    %set/v v011E3F30_0, 1, 1;
+    %set/v v01223308_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011E3F30_0, 1, 1;
+    %set/v v01223308_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 17 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "or_nand_tb.v";
+    "or_nand.v";
