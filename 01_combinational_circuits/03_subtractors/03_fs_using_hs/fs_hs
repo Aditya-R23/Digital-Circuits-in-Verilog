@@ -1,0 +1,94 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0110E090 .scope module, "fs_hs_tb" "fs_hs_tb" 2 1;
+ .timescale 0 0;
+v0110B380_0 .var "a", 0 0;
+v0110B328_0 .var "b", 0 0;
+v0110B488_0 .var "bin", 0 0;
+v0110B3D8_0 .net "bout", 0 0, L_0113F9B0; 1 drivers
+v0110B698_0 .net "d", 0 0, L_0113FC50; 1 drivers
+S_0110DE70 .scope module, "n1" "fs_hs" 2 4, 3 1, S_0110E090;
+ .timescale 0 0;
+L_0113F9B0 .functor OR 1, L_0113F8D0, L_0113F9E8, C4<0>, C4<0>;
+v0110B220_0 .net "a", 0 0, v0110B380_0; 1 drivers
+v0110B7A0_0 .net "b", 0 0, v0110B328_0; 1 drivers
+v0110B278_0 .net "bin", 0 0, v0110B488_0; 1 drivers
+v0110B2D0_0 .alias "bout", 0 0, v0110B3D8_0;
+v0110B1C8_0 .alias "diff", 0 0, v0110B698_0;
+v0110B7F8_0 .net "w1", 0 0, L_0113F978; 1 drivers
+v0110B170_0 .net "w2", 0 0, L_0113F8D0; 1 drivers
+v0110B850_0 .net "w3", 0 0, L_0113F9E8; 1 drivers
+S_0110D5F0 .scope module, "h1" "hs" 3 6, 3 13, S_0110DE70;
+ .timescale 0 0;
+L_0113F978 .functor XOR 1, v0110B380_0, v0110B328_0, C4<0>, C4<0>;
+L_0113FA58 .functor NOT 1, v0110B380_0, C4<0>, C4<0>, C4<0>;
+L_0113F8D0 .functor AND 1, L_0113FA58, v0110B328_0, C4<1>, C4<1>;
+v011032F8_0 .net *"_s2", 0 0, L_0113FA58; 1 drivers
+v0110EE80_0 .alias "a", 0 0, v0110B220_0;
+v0110EED8_0 .alias "b", 0 0, v0110B7A0_0;
+v0110EF30_0 .alias "bout", 0 0, v0110B170_0;
+v0110EF88_0 .alias "d", 0 0, v0110B7F8_0;
+S_0110D3D0 .scope module, "h2" "hs" 3 7, 3 13, S_0110DE70;
+ .timescale 0 0;
+L_0113FC50 .functor XOR 1, L_0113F978, v0110B488_0, C4<0>, C4<0>;
+L_0113F940 .functor NOT 1, L_0113F978, C4<0>, C4<0>, C4<0>;
+L_0113F9E8 .functor AND 1, L_0113F940, v0110B488_0, C4<1>, C4<1>;
+v01104028_0 .net *"_s2", 0 0, L_0113F940; 1 drivers
+v01104080_0 .alias "a", 0 0, v0110B7F8_0;
+v011040D8_0 .alias "b", 0 0, v0110B278_0;
+v01103248_0 .alias "bout", 0 0, v0110B850_0;
+v011032A0_0 .alias "d", 0 0, v0110B698_0;
+    .scope S_0110E090;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, bin = %b, diff = %b, bout = %b", v0110B380_0, v0110B328_0, v0110B488_0, v0110B698_0, v0110B3D8_0;
+    %vpi_call 2 8 "$dumpfile", "fs_hs_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_0110E090;
+    %end;
+    .thread T_0;
+    .scope S_0110E090;
+T_1 ;
+    %set/v v0110B380_0, 0, 1;
+    %set/v v0110B328_0, 0, 1;
+    %set/v v0110B488_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 0, 1;
+    %set/v v0110B328_0, 0, 1;
+    %set/v v0110B488_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 0, 1;
+    %set/v v0110B328_0, 1, 1;
+    %set/v v0110B488_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 0, 1;
+    %set/v v0110B328_0, 1, 1;
+    %set/v v0110B488_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 1, 1;
+    %set/v v0110B328_0, 0, 1;
+    %set/v v0110B488_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 1, 1;
+    %set/v v0110B328_0, 0, 1;
+    %set/v v0110B488_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 1, 1;
+    %set/v v0110B328_0, 1, 1;
+    %set/v v0110B488_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0110B380_0, 1, 1;
+    %set/v v0110B328_0, 1, 1;
+    %set/v v0110B488_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fs_hs_tb.v";
+    "fs_hs.v";
