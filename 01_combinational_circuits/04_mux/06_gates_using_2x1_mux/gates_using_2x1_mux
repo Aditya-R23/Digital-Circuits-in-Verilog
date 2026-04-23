@@ -1,0 +1,110 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A295E8 .scope module, "gates_using_2x1_mux_tb" "gates_using_2x1_mux_tb" 2 1;
+ .timescale 0 0;
+v01170E50_0 .var "a", 0 0;
+v01170820_0 .net "and_out", 0 0, L_01170718; 1 drivers
+v011706C0_0 .var "b", 0 0;
+v01170560_0 .net "nand_out", 0 0, L_011709D8; 1 drivers
+v01170878_0 .net "nor_out", 0 0, L_01170A30; 1 drivers
+v01170CF0_0 .net "not_out", 0 0, L_01170DA0; 1 drivers
+v01170C98_0 .net "or_out", 0 0, L_01170C40; 1 drivers
+v01170610_0 .net "xnor_out", 0 0, L_01170508; 1 drivers
+v011708D0_0 .net "xor_out", 0 0, L_01170770; 1 drivers
+S_00A28E78 .scope module, "gates" "gates_using_2x1_mux" 2 4, 3 1, S_00A295E8;
+ .timescale 0 0;
+L_01198D70 .functor NOT 1, v01170E50_0, C4<0>, C4<0>, C4<0>;
+L_01198C90 .functor NOT 1, v01170E50_0, C4<0>, C4<0>, C4<0>;
+L_01198E18 .functor NOT 1, v01170E50_0, C4<0>, C4<0>, C4<0>;
+L_01198E50 .functor NOT 1, v01170E50_0, C4<0>, C4<0>, C4<0>;
+v01170068_0 .net "a", 0 0, v01170E50_0; 1 drivers
+v01170980_0 .alias "and_out", 0 0, v01170820_0;
+v011705B8_0 .net "b", 0 0, v011706C0_0; 1 drivers
+v01170668_0 .alias "nand_out", 0 0, v01170560_0;
+v011707C8_0 .alias "nor_out", 0 0, v01170878_0;
+v01170BE8_0 .alias "not_out", 0 0, v01170CF0_0;
+v01170928_0 .alias "or_out", 0 0, v01170C98_0;
+v011703A8_0 .alias "xnor_out", 0 0, v01170610_0;
+v01170B38_0 .alias "xor_out", 0 0, v011708D0_0;
+S_00A299A0 .scope module, "not1" "mux_2x1" 3 6, 3 16, S_00A28E78;
+ .timescale 0 0;
+v01170220_0 .net "a", 0 0, C4<1>; 1 drivers
+v0116FDA8_0 .net "b", 0 0, C4<0>; 1 drivers
+v0116FE00_0 .alias "sel", 0 0, v01170068_0;
+v0116FFB8_0 .alias "y", 0 0, v01170CF0_0;
+L_01170DA0 .functor MUXZ 1, C4<1>, C4<0>, v01170E50_0, C4<>;
+S_00A29450 .scope module, "and1" "mux_2x1" 3 7, 3 16, S_00A28E78;
+ .timescale 0 0;
+v0116FF60_0 .net "a", 0 0, C4<0>; 1 drivers
+v0116FE58_0 .alias "b", 0 0, v01170068_0;
+v0116FBF0_0 .alias "sel", 0 0, v011705B8_0;
+v01170118_0 .alias "y", 0 0, v01170820_0;
+L_01170718 .functor MUXZ 1, C4<0>, v01170E50_0, v011706C0_0, C4<>;
+S_00A29808 .scope module, "or1" "mux_2x1" 3 8, 3 16, S_00A28E78;
+ .timescale 0 0;
+v0116FB98_0 .alias "a", 0 0, v01170068_0;
+v0116FCA0_0 .net "b", 0 0, C4<1>; 1 drivers
+v011702D0_0 .alias "sel", 0 0, v011705B8_0;
+v011700C0_0 .alias "y", 0 0, v01170C98_0;
+L_01170C40 .functor MUXZ 1, v01170E50_0, C4<1>, v011706C0_0, C4<>;
+S_00A29780 .scope module, "nand1" "mux_2x1" 3 9, 3 16, S_00A28E78;
+ .timescale 0 0;
+v0116FD50_0 .net "a", 0 0, C4<1>; 1 drivers
+v0116FC48_0 .net "b", 0 0, L_01198D70; 1 drivers
+v0116FCF8_0 .alias "sel", 0 0, v011705B8_0;
+v011701C8_0 .alias "y", 0 0, v01170560_0;
+L_011709D8 .functor MUXZ 1, C4<1>, L_01198D70, v011706C0_0, C4<>;
+S_00A29560 .scope module, "nor1" "mux_2x1" 3 10, 3 16, S_00A28E78;
+ .timescale 0 0;
+v0116FEB0_0 .net "a", 0 0, L_01198C90; 1 drivers
+v01170278_0 .net "b", 0 0, C4<0>; 1 drivers
+v01170010_0 .alias "sel", 0 0, v011705B8_0;
+v01170170_0 .alias "y", 0 0, v01170878_0;
+L_01170A30 .functor MUXZ 1, L_01198C90, C4<0>, v011706C0_0, C4<>;
+S_00A296F8 .scope module, "xor1" "mux_2x1" 3 11, 3 16, S_00A28E78;
+ .timescale 0 0;
+v01172268_0 .alias "a", 0 0, v01170068_0;
+v011722C0_0 .net "b", 0 0, L_01198E18; 1 drivers
+v00A22FE0_0 .alias "sel", 0 0, v011705B8_0;
+v0116FF08_0 .alias "y", 0 0, v011708D0_0;
+L_01170770 .functor MUXZ 1, v01170E50_0, L_01198E18, v011706C0_0, C4<>;
+S_00A29010 .scope module, "xnor1" "mux_2x1" 3 12, 3 16, S_00A28E78;
+ .timescale 0 0;
+v00A24D98_0 .net "a", 0 0, L_01198E50; 1 drivers
+v00A24DF0_0 .alias "b", 0 0, v01170068_0;
+v00A24E48_0 .alias "sel", 0 0, v011705B8_0;
+v01172210_0 .alias "y", 0 0, v01170610_0;
+L_01170508 .functor MUXZ 1, L_01198E50, v01170E50_0, v011706C0_0, C4<>;
+    .scope S_00A295E8;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, not = %b, and = %b, or = %b, nand = %b, nor = %b, xor = %b, xnor = %b", v01170E50_0, v011706C0_0, v01170CF0_0, v01170820_0, v01170C98_0, v01170560_0, v01170878_0, v011708D0_0, v01170610_0;
+    %vpi_call 2 8 "$dumpfile", "gates_using_2x1_mux_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_00A295E8;
+    %end;
+    .thread T_0;
+    .scope S_00A295E8;
+T_1 ;
+    %set/v v01170E50_0, 0, 1;
+    %set/v v011706C0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01170E50_0, 0, 1;
+    %set/v v011706C0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01170E50_0, 1, 1;
+    %set/v v011706C0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01170E50_0, 1, 1;
+    %set/v v011706C0_0, 1, 1;
+    %delay 10, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "gates_using_2x1_mux_tb.v";
+    "gates_using_2x1_mux.v";
