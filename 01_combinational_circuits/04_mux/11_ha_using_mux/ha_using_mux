@@ -1,0 +1,63 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01147D50 .scope module, "ha_using_mux_tb" "ha_using_mux_tb" 2 1;
+ .timescale 0 0;
+v01143370_0 .var "a", 0 0;
+v01183A28_0 .var "b", 0 0;
+v01183A80_0 .net "cout", 0 0, L_011A13E0; 1 drivers
+v011A1648_0 .net "sum", 0 0, L_011A1438; 1 drivers
+S_01148900 .scope module, "n1" "ha_using_mux" 2 4, 3 1, S_01147D50;
+ .timescale 0 0;
+L_0114EFA0 .functor NOT 1, v01143370_0, C4<0>, C4<0>, C4<0>;
+v01144448_0 .net "a", 0 0, v01143370_0; 1 drivers
+v011444A0_0 .net "b", 0 0, v01183A28_0; 1 drivers
+v011432C0_0 .alias "cout", 0 0, v01183A80_0;
+v01143318_0 .alias "sum", 0 0, v011A1648_0;
+S_01147E60 .scope module, "sum_mux" "mux_2x1" 3 5, 3 9, S_01148900;
+ .timescale 0 0;
+v01143E40_0 .alias "a", 0 0, v01144448_0;
+v01143E98_0 .net "b", 0 0, L_0114EFA0; 1 drivers
+v01143EF0_0 .alias "sel", 0 0, v011444A0_0;
+v011443F0_0 .alias "y", 0 0, v011A1648_0;
+L_011A1438 .functor MUXZ 1, v01143370_0, L_0114EFA0, v01183A28_0, C4<>;
+S_01148190 .scope module, "cout_mux" "mux_2x1" 3 6, 3 9, S_01148900;
+ .timescale 0 0;
+v01183F58_0 .net "a", 0 0, C4<0>; 1 drivers
+v0114EE98_0 .alias "b", 0 0, v01144448_0;
+v0114EEF0_0 .alias "sel", 0 0, v011444A0_0;
+v0114EF48_0 .alias "y", 0 0, v01183A80_0;
+L_011A13E0 .functor MUXZ 1, C4<0>, v01143370_0, v01183A28_0, C4<>;
+    .scope S_01147D50;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, sum = %b, cout = %b", v01143370_0, v01183A28_0, v011A1648_0, v01183A80_0;
+    %vpi_call 2 8 "$dumpfile", "ha_using_mux_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_01147D50;
+    %end;
+    .thread T_0;
+    .scope S_01147D50;
+T_1 ;
+    %set/v v01143370_0, 0, 1;
+    %set/v v01183A28_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01143370_0, 0, 1;
+    %set/v v01183A28_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01143370_0, 1, 1;
+    %set/v v01183A28_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01143370_0, 1, 1;
+    %set/v v01183A28_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 17 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ha_using_mux_tb.v";
+    "ha_using_mux.v";
