@@ -1,0 +1,148 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00A2A8D8 .scope module, "fa_using_mux_tb" "fa_using_mux_tb" 2 1;
+ .timescale 0 0;
+v01220B90_0 .var "a", 0 0;
+v01220928_0 .var "b", 0 0;
+v01220BE8_0 .net "carry", 0 0, L_00A2CC78; 1 drivers
+v01220770_0 .var "cin", 0 0;
+v0124B590_0 .net "sum", 0 0, L_012212E8; 1 drivers
+S_00A2A0E0 .scope module, "n1" "fa_using_mux" 2 4, 3 1, S_00A2A8D8;
+ .timescale 0 0;
+L_01221240 .functor NOT 1, v01220770_0, C4<0>, C4<0>, C4<0>;
+L_01221668 .functor NOT 1, v01220770_0, C4<0>, C4<0>, C4<0>;
+v012208D0_0 .net "a", 0 0, v01220B90_0; 1 drivers
+v01220AE0_0 .net "b", 0 0, v01220928_0; 1 drivers
+v01220B38_0 .net "cin", 0 0, v01220770_0; 1 drivers
+v01220878_0 .alias "cout", 0 0, v01220BE8_0;
+v01220A88_0 .alias "sum", 0 0, v0124B590_0;
+S_00A2A6B8 .scope module, "mux_sum" "mux_4x1" 3 5, 3 10, S_00A2A0E0;
+ .timescale 0 0;
+L_00A24E30 .functor NOT 1, v01220B90_0, C4<0>, C4<0>, C4<0>;
+L_00A23F10 .functor NOT 1, v01220928_0, C4<0>, C4<0>, C4<0>;
+L_00A23FF0 .functor AND 1, L_00A24E30, L_00A23F10, C4<1>, C4<1>;
+L_01220DC0 .functor AND 1, L_00A23FF0, v01220770_0, C4<1>, C4<1>;
+L_01220F10 .functor NOT 1, v01220B90_0, C4<0>, C4<0>, C4<0>;
+L_01220D88 .functor AND 1, L_01220F10, v01220928_0, C4<1>, C4<1>;
+L_01220E30 .functor AND 1, L_01220D88, L_01221240, C4<1>, C4<1>;
+L_01220DF8 .functor OR 1, L_01220DC0, L_01220E30, C4<0>, C4<0>;
+L_01220EA0 .functor NOT 1, v01220928_0, C4<0>, C4<0>, C4<0>;
+L_01220F80 .functor AND 1, v01220B90_0, L_01220EA0, C4<1>, C4<1>;
+L_01220C70 .functor AND 1, L_01220F80, L_01221668, C4<1>, C4<1>;
+L_01221630 .functor OR 1, L_01220DF8, L_01220C70, C4<0>, C4<0>;
+L_012215F8 .functor AND 1, v01220B90_0, v01220928_0, C4<1>, C4<1>;
+L_01221588 .functor AND 1, L_012215F8, v01220770_0, C4<1>, C4<1>;
+L_012212E8 .functor OR 1, L_01221630, L_01221588, C4<0>, C4<0>;
+v012204B0_0 .net *"_s0", 0 0, L_00A24E30; 1 drivers
+v012200E8_0 .net *"_s10", 0 0, L_01220D88; 1 drivers
+v01220610_0 .net *"_s12", 0 0, L_01220E30; 1 drivers
+v01220668_0 .net *"_s14", 0 0, L_01220DF8; 1 drivers
+v012202F8_0 .net *"_s16", 0 0, L_01220EA0; 1 drivers
+v01220350_0 .net *"_s18", 0 0, L_01220F80; 1 drivers
+v012203A8_0 .net *"_s2", 0 0, L_00A23F10; 1 drivers
+v01220458_0 .net *"_s20", 0 0, L_01220C70; 1 drivers
+v01220400_0 .net *"_s22", 0 0, L_01221630; 1 drivers
+v012206C0_0 .net *"_s24", 0 0, L_012215F8; 1 drivers
+v0121FF88_0 .net *"_s26", 0 0, L_01221588; 1 drivers
+v01220718_0 .net *"_s4", 0 0, L_00A23FF0; 1 drivers
+v0121FC70_0 .net *"_s6", 0 0, L_01220DC0; 1 drivers
+v0121FCC8_0 .net *"_s8", 0 0, L_01220F10; 1 drivers
+v0121FDD0_0 .alias "a", 0 0, v01220B38_0;
+v0121FFE0_0 .net "b", 0 0, L_01221240; 1 drivers
+v012209D8_0 .net "c", 0 0, L_01221668; 1 drivers
+v012207C8_0 .alias "d", 0 0, v01220B38_0;
+v01220980_0 .alias "s0", 0 0, v01220AE0_0;
+v01220820_0 .alias "s1", 0 0, v012208D0_0;
+v01220A30_0 .alias "y", 0 0, v0124B590_0;
+S_00A2A498 .scope module, "mux_cout" "mux_4x1" 3 6, 3 10, S_00A2A0E0;
+ .timescale 0 0;
+L_012210B8 .functor NOT 1, v01220B90_0, C4<0>, C4<0>, C4<0>;
+L_012212B0 .functor NOT 1, v01220928_0, C4<0>, C4<0>, C4<0>;
+L_01221128 .functor AND 1, L_012210B8, L_012212B0, C4<1>, C4<1>;
+L_012216D8 .functor AND 1, L_01221128, C4<0>, C4<1>, C4<1>;
+L_01221198 .functor NOT 1, v01220B90_0, C4<0>, C4<0>, C4<0>;
+L_012214A8 .functor AND 1, L_01221198, v01220928_0, C4<1>, C4<1>;
+L_01221358 .functor AND 1, L_012214A8, v01220770_0, C4<1>, C4<1>;
+L_01221710 .functor OR 1, L_012216D8, L_01221358, C4<0>, C4<0>;
+L_012210F0 .functor NOT 1, v01220928_0, C4<0>, C4<0>, C4<0>;
+L_01221390 .functor AND 1, v01220B90_0, L_012210F0, C4<1>, C4<1>;
+L_012211D0 .functor AND 1, L_01221390, v01220770_0, C4<1>, C4<1>;
+L_01221780 .functor OR 1, L_01221710, L_012211D0, C4<0>, C4<0>;
+L_00A2D148 .functor AND 1, v01220B90_0, v01220928_0, C4<1>, C4<1>;
+L_00A2D1B8 .functor AND 1, L_00A2D148, C4<1>, C4<1>, C4<1>;
+L_00A2CC78 .functor OR 1, L_01221780, L_00A2D1B8, C4<0>, C4<0>;
+v00A29128_0 .net *"_s0", 0 0, L_012210B8; 1 drivers
+v00A29078_0 .net *"_s10", 0 0, L_012214A8; 1 drivers
+v00A29180_0 .net *"_s12", 0 0, L_01221358; 1 drivers
+v00A29390_0 .net *"_s14", 0 0, L_01221710; 1 drivers
+v00A293E8_0 .net *"_s16", 0 0, L_012210F0; 1 drivers
+v0121FED8_0 .net *"_s18", 0 0, L_01221390; 1 drivers
+v01220560_0 .net *"_s2", 0 0, L_012212B0; 1 drivers
+v01220140_0 .net *"_s20", 0 0, L_012211D0; 1 drivers
+v0121FD20_0 .net *"_s22", 0 0, L_01221780; 1 drivers
+v01220198_0 .net *"_s24", 0 0, L_00A2D148; 1 drivers
+v01220508_0 .net *"_s26", 0 0, L_00A2D1B8; 1 drivers
+v0121FE28_0 .net *"_s4", 0 0, L_01221128; 1 drivers
+v01220038_0 .net *"_s6", 0 0, L_012216D8; 1 drivers
+v01220248_0 .net *"_s8", 0 0, L_01221198; 1 drivers
+v012205B8_0 .net "a", 0 0, C4<0>; 1 drivers
+v012201F0_0 .alias "b", 0 0, v01220B38_0;
+v01220090_0 .alias "c", 0 0, v01220B38_0;
+v0121FE80_0 .net "d", 0 0, C4<1>; 1 drivers
+v012202A0_0 .alias "s0", 0 0, v01220AE0_0;
+v0121FF30_0 .alias "s1", 0 0, v012208D0_0;
+v0121FD78_0 .alias "y", 0 0, v01220BE8_0;
+    .scope S_00A2A8D8;
+T_0 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, cin = %b,sum = %b, carry = %b", v01220B90_0, v01220928_0, v01220770_0, v0124B590_0, v01220BE8_0;
+    %vpi_call 2 8 "$dumpfile", "fa_using_mux_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_00A2A8D8;
+    %end;
+    .thread T_0;
+    .scope S_00A2A8D8;
+T_1 ;
+    %set/v v01220B90_0, 0, 1;
+    %set/v v01220928_0, 0, 1;
+    %set/v v01220770_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 0, 1;
+    %set/v v01220928_0, 0, 1;
+    %set/v v01220770_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 0, 1;
+    %set/v v01220928_0, 1, 1;
+    %set/v v01220770_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 0, 1;
+    %set/v v01220928_0, 1, 1;
+    %set/v v01220770_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 1, 1;
+    %set/v v01220928_0, 0, 1;
+    %set/v v01220770_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 1, 1;
+    %set/v v01220928_0, 0, 1;
+    %set/v v01220770_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 1, 1;
+    %set/v v01220928_0, 1, 1;
+    %set/v v01220770_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01220B90_0, 1, 1;
+    %set/v v01220928_0, 1, 1;
+    %set/v v01220770_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fa_using_mux_tb.v";
+    "fa_using_mux.v";
