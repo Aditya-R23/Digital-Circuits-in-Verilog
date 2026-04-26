@@ -1,0 +1,51 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01238648 .scope module, "demux_1x2_tb" "demux_1x2_tb" 2 1;
+ .timescale 0 0;
+v01233F58_0 .var "in", 0 0;
+v01239050_0 .var "sel", 0 0;
+v012390A8_0 .net "y0", 0 0, L_01239190; 1 drivers
+v01239100_0 .net "y1", 0 0, L_0123DE78; 1 drivers
+S_01233360 .scope module, "demux" "demux_1x2" 2 5, 3 1, S_01238648;
+ .timescale 0 0;
+L_01239550 .functor NOT 1, v01239050_0, C4<0>, C4<0>, C4<0>;
+L_01239190 .functor AND 1, v01233F58_0, L_01239550, C4<1>, C4<1>;
+L_0123DE78 .functor AND 1, v01233F58_0, v01239050_0, C4<1>, C4<1>;
+v012333E8_0 .net *"_s0", 0 0, L_01239550; 1 drivers
+v01233440_0 .net "in", 0 0, v01233F58_0; 1 drivers
+v01233E50_0 .net "sel", 0 0, v01239050_0; 1 drivers
+v01233EA8_0 .alias "y0", 0 0, v012390A8_0;
+v01233F00_0 .alias "y1", 0 0, v01239100_0;
+    .scope S_01238648;
+T_0 ;
+    %vpi_call 2 8 "$monitor", "in = %b, sel = %b, y0 = %b, y1 = %b", v01233F58_0, v01239050_0, v012390A8_0, v01239100_0;
+    %vpi_call 2 9 "$dumpfile", "demux_1x2_tb.vcd";
+    %vpi_call 2 10 "$dumpvars", 1'sb0, S_01238648;
+    %end;
+    .thread T_0;
+    .scope S_01238648;
+T_1 ;
+    %set/v v01233F58_0, 0, 1;
+    %set/v v01239050_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01233F58_0, 1, 1;
+    %set/v v01239050_0, 0, 1;
+    %delay 10, 0;
+    %set/v v01233F58_0, 0, 1;
+    %set/v v01239050_0, 1, 1;
+    %delay 10, 0;
+    %set/v v01233F58_0, 1, 1;
+    %set/v v01239050_0, 1, 1;
+    %delay 10, 0;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "1x2_demux_tb.v";
+    "1x2_demux.v";
