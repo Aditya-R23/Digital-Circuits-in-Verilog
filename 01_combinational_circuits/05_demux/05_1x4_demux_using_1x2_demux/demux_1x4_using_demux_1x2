@@ -1,0 +1,119 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_008DD978 .scope module, "demux_1x4_using_demux_1x2_tb" "demux_1x4_using_demux_1x2_tb" 2 1;
+ .timescale 0 0;
+v011C11C0_0 .var "in", 0 0;
+RS_011C4114 .resolv tri, L_011C0D48, L_011C1008, L_011C1378, L_011C0DA0;
+v011C0EA8_0 .net8 "out", 3 0, RS_011C4114; 4 drivers
+v011C0F00_0 .var "sel", 1 0;
+S_008DE170 .scope module, "uut" "demux_1x4_using_demux_1x2" 2 6, 3 1, S_008DD978;
+ .timescale 0 0;
+v011C1168_0 .net "in", 0 0, v011C11C0_0; 1 drivers
+v011C1428_0 .alias "out", 3 0, v011C0EA8_0;
+v011C1110_0 .net "sel", 1 0, v011C0F00_0; 1 drivers
+v011C10B8_0 .net "w1", 0 0, L_008D42E8; 1 drivers
+v011C13D0_0 .net "w2", 0 0, L_008D8C18; 1 drivers
+L_011C0FB0 .part v011C0F00_0, 1, 1;
+L_011C1218 .part v011C0F00_0, 0, 1;
+L_011C0D48 .part/pv L_011E8F50, 0, 1, 4;
+L_011C1008 .part/pv L_011E8F88, 1, 1, 4;
+L_011C12C8 .part v011C0F00_0, 0, 1;
+L_011C1378 .part/pv L_011E8CB0, 2, 1, 4;
+L_011C0DA0 .part/pv L_011E8E00, 3, 1, 4;
+S_008DE0E8 .scope module, "d1" "demux_1x2" 3 7, 3 15, S_008DE170;
+ .timescale 0 0;
+L_008D42B0 .functor NOT 1, L_011C0FB0, C4<0>, C4<0>, C4<0>;
+L_008D42E8 .functor AND 1, v011C11C0_0, L_008D42B0, C4<1>, C4<1>;
+L_008D8C18 .functor AND 1, v011C11C0_0, L_011C0FB0, C4<1>, C4<1>;
+v011C0F58_0 .net *"_s0", 0 0, L_008D42B0; 1 drivers
+v011C0CF0_0 .alias "in", 0 0, v011C1168_0;
+v011C1270_0 .net "sel", 0 0, L_011C0FB0; 1 drivers
+v011C0DF8_0 .alias "y0", 0 0, v011C10B8_0;
+v011C0E50_0 .alias "y1", 0 0, v011C13D0_0;
+S_008DE060 .scope module, "d2" "demux_1x2" 3 8, 3 15, S_008DE170;
+ .timescale 0 0;
+L_011E8C78 .functor NOT 1, L_011C1218, C4<0>, C4<0>, C4<0>;
+L_011E8F50 .functor AND 1, L_008D42E8, L_011E8C78, C4<1>, C4<1>;
+L_011E8F88 .functor AND 1, L_008D42E8, L_011C1218, C4<1>, C4<1>;
+v008D30C0_0 .net *"_s0", 0 0, L_011E8C78; 1 drivers
+v008D41C8_0 .alias "in", 0 0, v011C10B8_0;
+v008D4220_0 .net "sel", 0 0, L_011C1218; 1 drivers
+v011C1060_0 .net "y0", 0 0, L_011E8F50; 1 drivers
+v011C1320_0 .net "y1", 0 0, L_011E8F88; 1 drivers
+S_008DE1F8 .scope module, "d3" "demux_1x2" 3 9, 3 15, S_008DE170;
+ .timescale 0 0;
+L_011E8DC8 .functor NOT 1, L_011C12C8, C4<0>, C4<0>, C4<0>;
+L_011E8CB0 .functor AND 1, L_008D8C18, L_011E8DC8, C4<1>, C4<1>;
+L_011E8E00 .functor AND 1, L_008D8C18, L_011C12C8, C4<1>, C4<1>;
+v008D4968_0 .net *"_s0", 0 0, L_011E8DC8; 1 drivers
+v008D49C0_0 .alias "in", 0 0, v011C13D0_0;
+v008D4A18_0 .net "sel", 0 0, L_011C12C8; 1 drivers
+v008D3010_0 .net "y0", 0 0, L_011E8CB0; 1 drivers
+v008D3068_0 .net "y1", 0 0, L_011E8E00; 1 drivers
+    .scope S_008DD978;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "demux_1x4_using_demux_1x2_tb.vcd";
+    %vpi_call 2 10 "$dumpvars", 1'sb0, S_008DD978;
+    %vpi_call 2 11 "$monitor", "in = %b, sel = %b, out = %b", v011C11C0_0, v011C0F00_0, v011C0EA8_0;
+    %set/v v011C11C0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 0, 1;
+    %delay 10, 0;
+    %set/v v011C11C0_0, 1, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v011C0F00_0, 1, 1;
+    %delay 10, 0;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish";
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "1x4_using_1x2_tb.v";
+    "1x4_using_1x2.v";

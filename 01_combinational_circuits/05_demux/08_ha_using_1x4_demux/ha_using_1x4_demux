@@ -1,0 +1,100 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_01298D28 .scope module, "ha_using_1x4_demux_tb" "ha_using_1x4_demux_tb" 2 1;
+ .timescale 0 0;
+v0129DA10_0 .var "a", 0 0;
+v0129DA68_0 .var "b", 0 0;
+v0129DAC0_0 .net "cout", 0 0, L_0129E1C8; 1 drivers
+v0129DB18_0 .net "sum", 0 0, L_0129DBF0; 1 drivers
+S_01298A80 .scope module, "n1" "ha_using_1x4_demux" 2 4, 3 1, S_01298D28;
+ .timescale 0 0;
+v01294FF8_0 .net *"_s3", 0 0, L_0129E118; 1 drivers
+v01292FE0_0 .net *"_s5", 0 0, L_0129DB98; 1 drivers
+v01293038_0 .net "a", 0 0, v0129DA10_0; 1 drivers
+v01293090_0 .net "b", 0 0, v0129DA68_0; 1 drivers
+v01294148_0 .alias "cout", 0 0, v0129DAC0_0;
+v012941A0_0 .alias "sum", 0 0, v0129DB18_0;
+v012941F8_0 .net "w", 3 0, v0129A5C0_0; 1 drivers
+L_0129E118 .part v0129A5C0_0, 1, 1;
+L_0129DB98 .part v0129A5C0_0, 2, 1;
+L_0129DBF0 .arith/sum 1, L_0129E118, L_0129DB98;
+L_0129E1C8 .part v0129A5C0_0, 3, 1;
+S_012989F8 .scope module, "d1" "demux_1x4" 3 6, 3 13, S_01298A80;
+ .timescale 0 0;
+v01163E00_0 .net "in", 0 0, C4<1>; 1 drivers
+v0129A5C0_0 .var "out", 3 0;
+v01294F48_0 .alias "s0", 0 0, v01293038_0;
+v01294FA0_0 .alias "s1", 0 0, v01293090_0;
+E_01299530 .event edge, v01294FA0_0, v01294F48_0, v01163E00_0;
+    .scope S_012989F8;
+T_0 ;
+    %wait E_01299530;
+    %set/v v0129A5C0_0, 0, 4;
+    %load/v 8, v01294F48_0, 1;
+    %load/v 9, v01294FA0_0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/1 T_0.0, 6;
+    %cmpi/u 8, 1, 2;
+    %jmp/1 T_0.1, 6;
+    %cmpi/u 8, 2, 2;
+    %jmp/1 T_0.2, 6;
+    %cmpi/u 8, 3, 2;
+    %jmp/1 T_0.3, 6;
+    %jmp T_0.4;
+T_0.0 ;
+    %load/v 8, v01163E00_0, 1;
+    %ix/load 0, 0, 0;
+    %set/x0 v0129A5C0_0, 8, 1;
+    %jmp T_0.4;
+T_0.1 ;
+    %load/v 8, v01163E00_0, 1;
+    %ix/load 0, 1, 0;
+    %set/x0 v0129A5C0_0, 8, 1;
+    %jmp T_0.4;
+T_0.2 ;
+    %load/v 8, v01163E00_0, 1;
+    %ix/load 0, 2, 0;
+    %set/x0 v0129A5C0_0, 8, 1;
+    %jmp T_0.4;
+T_0.3 ;
+    %load/v 8, v01163E00_0, 1;
+    %ix/load 0, 3, 0;
+    %set/x0 v0129A5C0_0, 8, 1;
+    %jmp T_0.4;
+T_0.4 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_01298D28;
+T_1 ;
+    %vpi_call 2 7 "$monitor", "a = %b, b = %b, sum = %b, carry = %b", v0129DA10_0, v0129DA68_0, v0129DB18_0, v0129DAC0_0;
+    %vpi_call 2 8 "$dumpfile", "ha_using_1x4_demux_tb.vcd";
+    %vpi_call 2 9 "$dumpvars", 1'sb0, S_01298D28;
+    %end;
+    .thread T_1;
+    .scope S_01298D28;
+T_2 ;
+    %set/v v0129DA10_0, 0, 1;
+    %set/v v0129DA68_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0129DA10_0, 0, 1;
+    %set/v v0129DA68_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0129DA10_0, 1, 1;
+    %set/v v0129DA68_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0129DA10_0, 1, 1;
+    %set/v v0129DA68_0, 1, 1;
+    %delay 10, 0;
+    %vpi_call 2 17 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ha_using_1x4_demux_tb.v";
+    "ha_using_1x4_demux.v";

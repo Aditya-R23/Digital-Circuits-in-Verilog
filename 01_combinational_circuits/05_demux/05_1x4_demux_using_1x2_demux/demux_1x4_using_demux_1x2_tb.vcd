@@ -1,0 +1,118 @@
+$date
+	Wed Apr 29 19:23:23 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module demux_1x4_using_demux_1x2_tb $end
+$var wire 4 ! out [3:0] $end
+$var reg 1 " in $end
+$var reg 2 # sel [1:0] $end
+$scope module uut $end
+$var wire 1 $ in $end
+$var wire 4 % out [3:0] $end
+$var wire 2 & sel [1:0] $end
+$var wire 1 ' w1 $end
+$var wire 1 ( w2 $end
+$scope module d1 $end
+$var wire 1 $ in $end
+$var wire 1 ) sel $end
+$var wire 1 ' y0 $end
+$var wire 1 ( y1 $end
+$upscope $end
+$scope module d2 $end
+$var wire 1 ' in $end
+$var wire 1 * sel $end
+$var wire 1 + y0 $end
+$var wire 1 , y1 $end
+$upscope $end
+$scope module d3 $end
+$var wire 1 ( in $end
+$var wire 1 - sel $end
+$var wire 1 . y0 $end
+$var wire 1 / y1 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+0(
+0'
+b0 &
+b0 %
+0$
+b0 #
+0"
+b0 !
+$end
+#10
+1*
+1-
+b1 &
+b1 #
+#20
+0*
+0-
+1)
+b10 #
+b10 &
+#30
+1*
+1-
+b11 &
+b11 #
+#40
+1+
+b1 !
+b1 %
+1'
+0*
+0-
+0)
+0(
+b0 #
+b0 &
+1"
+1$
+#50
+0+
+1,
+b10 !
+b10 %
+1*
+1-
+b1 &
+b1 #
+#60
+0'
+1.
+0,
+b100 !
+b100 %
+1(
+0*
+0-
+1)
+b10 #
+b10 &
+#70
+0.
+1/
+b1000 !
+b1000 %
+1*
+1-
+b11 &
+b11 #
+#90
