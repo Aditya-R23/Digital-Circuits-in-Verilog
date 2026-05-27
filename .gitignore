@@ -72,3 +72,10 @@ hs_using_mux_tb.vcd
 enco
 enco_4_to_2_tb.vcd
 enco_8_to_3_tb.vcd
+enco_16_to_4_tb.vcd
+pri_enco
+pri_enco_4_to_2_tb.vcd
+pri_enco_8_to_3_tb.vcd
+pri_enco_16_to_4_tb.vcd
+pri_enco_casex
+pri_enco_4_to_2_using_casex_tb.vcd
