@@ -79,3 +79,15 @@ pri_enco_8_to_3_tb.vcd
 pri_enco_16_to_4_tb.vcd
 pri_enco_casex
 pri_enco_4_to_2_using_casex_tb.vcd
+pri_enco_8_to_3_using_casex_tb.vcd
+pri_enco_16_to_4_using_casex_tb.vcd
+deco
+deco_2_to_4_tb.vcd
+deco_3_to_8_tb.vcd
+deco_4_to_16_tb.vcd
+deco_2_to_4_with_enable_tb.vcd
+deco_enable
+comp
+comp_1bit_tb.vcd
+comp_2bit_tb.vcd
+n_bit_comp_tb.vcd
